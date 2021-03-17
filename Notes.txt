@@ -1,4 +1,0 @@
-Serial USB Driver for CH340:
-https://sparks.gogo.co.nz/ch340.html
-
-Unistall drivers if already installed and install these drivers.
