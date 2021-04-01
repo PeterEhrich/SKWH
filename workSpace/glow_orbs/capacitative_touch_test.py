@@ -34,7 +34,7 @@ def search(x,delay):
     else:
       pixels[x-1]=(0,0,0)
         
-    pixels[x]=(255,255,255)  
+    pixels[x]=(50,50,50)  
     pixels.write()
     sleep(delay)
 
@@ -46,7 +46,7 @@ try:
   while True: 
     
     if touch.read() < 450:
-      search(search_counter,0.2)
+      search(search_counter,0.02)
       search_counter=(search_counter+1)%n
     else:
       clearAll()
