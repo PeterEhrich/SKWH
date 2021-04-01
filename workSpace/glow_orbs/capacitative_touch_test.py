@@ -27,37 +27,27 @@ def clearAll():
 # remove color from led at position
 def clear(position):
   color(position,0,0,0)
-
-
-# the color (r,g,b) should run x times like a cycle 
-def cycle(r,g,b,wait,x): 
-  # before setting new colors, clear the ring
-  clearAll()
   
-  # the cycle should run x times
-  for j in range(x):
-    for i in range(n):
-      # clear the previous led
-      if(i==0):
-        clear(n-1)
-      else:
-        clear(i-1)
-      
-      # color the current led
-      color(i,r,g,b)
-      
-      # wait, color is displayed this time
-      sleep(wait)
+def search(x,delay):
+    if x==0:
+      pixels[n-1]=(0,0,0)
+    else:
+      pixels[x-1]=(0,0,0)
+        
+    pixels[x]=(255,255,255)  
+    pixels.write()
+    sleep(delay)
 
 #Capacitative Touch Pins
 touch = TouchPad(Pin(12))
 
+search_counter=0
 try:
   while True: 
     
     if touch.read() < 450:
-      pixels.fill((255,0, 255))
-      pixels.write()
+      search(search_counter,0.2)
+      search_counter=(search_counter+1)%n
     else:
       clearAll()
     
